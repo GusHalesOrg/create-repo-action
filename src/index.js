@@ -10,11 +10,11 @@ const templateName = core.getInput('template-name')
 
 var createRepoData = JSON.stringify(
   {
-    "owner": targetOrgName,
+    "owner":targetOrgName,
     "name":targetRepoName,
-    "description": targetRepoDescription,
+    "description":targetRepoDescription,
     "private":true,
-    "include_all_branches": false,
+    "include_all_branches": false
   }
 );
 
