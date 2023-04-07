@@ -1,7 +1,18 @@
 {
+  "name": "javascript-testing-01",
+  "version": "1.0.0",
+  "description": "This is a fork of https://github.com/repo-ctrl/create-repo-action, main difference is that this creates a repo from a template",
+  "main": "src/index.js",
   "dependencies": {
     "octokit": "2.0.14",
     "@actions/core": "1.10.0",
     "@actions/github": "5.1.1"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
