@@ -13,7 +13,7 @@ const octokit = new Octokit({
 })
 
 async function main() {
-    octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
+    await octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
         template_owner: targetOrgName,
         template_repo: templateName,
         owner: targetOrgName,
