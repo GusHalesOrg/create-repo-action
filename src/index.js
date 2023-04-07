@@ -12,20 +12,24 @@ const octokit = new Octokit({
     auth: ghToken
 })
 
-await octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
-    template_owner: targetOrgName,
-    template_repo: templateName,
-    owner: targetOrgName,
-    name: targetRepoName,
-    description: targetRepoDescription,
-    include_all_branches: false,
-    'private': true,
-    headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-    }
-}).then(function (response) {
-    console.log("Repo "+targetRepoName+' created successfully!');
-    core.setOutput("repo-url", "https://github.com/"+targetOrgName+"/"+targetRepoName);
+async function main() {
+    octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
+        template_owner: targetOrgName,
+        template_repo: templateName,
+        owner: targetOrgName,
+        name: targetRepoName,
+        description: targetRepoDescription,
+        include_all_branches: false,
+        'private': true,
+        headers: {
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+    })
+}
+
+main().then(function (response) {
+    console.log("Repo " + targetRepoName + ' created successfully!');
+    core.setOutput("repo-url", "https://github.com/" + targetOrgName + "/" + targetRepoName);
 }).catch(function (error) {
     core.setOutput("repo-url", "");
     core.setFailed(error.message);
