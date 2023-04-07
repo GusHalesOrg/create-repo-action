@@ -13,7 +13,7 @@ const octokit = new Octokit({
     auth: ghToken
 })
 async function main() {
-    await octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
+    const response = octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
         template_owner: targetOrgName,
         template_repo: templateName,
         owner: targetOrgName,
@@ -25,6 +25,7 @@ async function main() {
             'X-GitHub-Api-Version': '2022-11-28'
         }
     })
+    console.log(response)
 }
 
 main().then(function (response) {
