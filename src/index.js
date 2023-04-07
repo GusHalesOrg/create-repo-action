@@ -6,7 +6,7 @@ const ghToken = core.getInput('org-admin-token');
 const targetRepoName = core.getInput('repo-name');
 const targetRepoDescription = core.getInput('repo-description');
 const targetOrgName = github.context.payload.repository.owner.login;
-const templateName = core.getInput('template-name')
+const templateName = "test-template-repo"
 
 const octokit = new Octokit({
     auth: ghToken
