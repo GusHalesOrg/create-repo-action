@@ -16,3 +16,4 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 RUN su node -c "npm install -g @vercel/ncc"
 RUN su node -c "npm install -g @actions/core"
 RUN su node -c "npm install -g @actions/github"
+RUN su node -c "npm install -g octokit"

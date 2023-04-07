@@ -25,7 +25,6 @@ async function main() {
             'X-GitHub-Api-Version': '2022-11-28'
         }
     })
-    console.log(response)
 }
 
 main().then(function (response) {
