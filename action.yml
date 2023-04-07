@@ -26,4 +26,4 @@ outputs:
     description: 'URL of the created repository'
 runs:
   using: 'node12'
-  main: 'src/index.js'
+  main: 'dist/index.js'
