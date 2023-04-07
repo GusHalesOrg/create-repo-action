@@ -19,11 +19,12 @@ await octokit.request('POST /repos/{template_owner}/{template_repo}/generate', {
     name: targetRepoName,
     description: targetRepoDescription,
     include_all_branches: false,
-    'private': false,
+    'private': true,
     headers: {
         'X-GitHub-Api-Version': '2022-11-28'
     }
 }).then(function (response) {
+    console.log(response)
     console.log("Repo "+targetRepoName+' created successfully!');
     core.setOutput("repo-url", "https://github.com/"+targetOrgName+"/"+targetRepoName);
 }).catch(function (error) {
