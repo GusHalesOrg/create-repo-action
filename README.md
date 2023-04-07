@@ -1,4 +1,5 @@
 # Create Repo Action
+This is a fork of https://github.com/repo-ctrl/create-repo-action, main difference is that this creates a repo from a template
 
 This action will create a repository in the namespace of the calling workflow. 
 
@@ -8,6 +9,10 @@ If a GitHub user calls this from a personal repository, the repo will be created
 ## Inputs:
 
 `repo-name`: Name of the repository
+
+`repo-description`: Description of the repository
+
+`template-name`: Template that will be used for repo creation
 
 `org-admin-token`: Org admin token with `repo` and `admin:org` scope
 
@@ -30,6 +35,14 @@ on:
         description: 'Name of the repository to be created'
         required: true
         default: ''
+      repo-description:
+        description: 'Description of the repository to be created'
+        required: false
+        default: ''
+      template-name:
+        description: 'Name of the template to use for the repository creation'
+        required: true
+        default: ''
 
 jobs:
   create-repository:
@@ -39,11 +52,13 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
       - name: Creating GitHub Organization Repository
-        uses: repo-ctrl/create-repo-action@main 
+        uses: GusHalesOrg/create-repo-action@main 
         id: create-repo
         with:
           repo-name: '${{ github.event.inputs.repo-name }}'
+          repo-description: '${{ github.event.inputs.repo-description }}'
+          template-name: '${{ github.event.inputs.template-name }}'
           org-admin-token: '${{ secrets.ORG_ADMIN_TOKEN }}'
       - name: Log URL to the repo
-        run: echo "The new repo is ${{ steps.create-repo.outputs.repo-url }}"
+        run: echo "The new repo is ${{ steps.create-repo.outputs.repo-url }}" >> $GITHUB_OUTPUT
 ```
